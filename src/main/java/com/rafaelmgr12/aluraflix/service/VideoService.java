@@ -1,6 +1,7 @@
 package com.rafaelmgr12.aluraflix.service;
 
 import com.rafaelmgr12.aluraflix.dto.PostVideosFormDto;
+import com.rafaelmgr12.aluraflix.dto.UpdateVideoFromDto;
 import com.rafaelmgr12.aluraflix.dto.VideoDetailsDto;
 import com.rafaelmgr12.aluraflix.model.Video;
 import com.rafaelmgr12.aluraflix.repository.VideosRepository;
@@ -38,6 +39,15 @@ public class VideoService {
 
         videoRepository.save(newVideo);
         return modelMapper.map(newVideo,VideoDetailsDto.class);
+
+    }
+
+    @Transactional
+    public VideoDetailsDto updateVideo(UpdateVideoFromDto video){
+        Video videoToUpdate = videoRepository.findById(video.getId()).orElseThrow();
+        videoToUpdate.update(video.getTitulo(),video.getDescricao(),video.getUrl());
+
+        return modelMapper.map(videoToUpdate,VideoDetailsDto.class);
 
     }
 }

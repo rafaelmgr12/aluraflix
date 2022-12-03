@@ -2,6 +2,7 @@ package com.rafaelmgr12.aluraflix.controller;
 
 
 import com.rafaelmgr12.aluraflix.dto.PostVideosFormDto;
+import com.rafaelmgr12.aluraflix.dto.UpdateVideoFromDto;
 import com.rafaelmgr12.aluraflix.dto.VideoDetailsDto;
 import com.rafaelmgr12.aluraflix.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class VideosController {
         VideoDetailsDto video = videosService.saveVideo(videoDto);
         URI uri = uriBuilder.path("/videos/{id}").buildAndExpand(video.getId()).toUri();
         return ResponseEntity.created(uri).body(video);
+    }
+
+    @PutMapping
+    public VideoDetailsDto updateVideo(@RequestBody @Valid UpdateVideoFromDto videoDto){
+        return videosService.updateVideo(videoDto);
     }
 }
