@@ -54,5 +54,10 @@ public class Video {
         this.url = url;
     }
 
+    public void update(String titulo, String descricao, String url) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.url = url;
+    }
 
 }
