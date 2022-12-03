@@ -1,14 +1,16 @@
 package com.rafaelmgr12.aluraflix.dto;
 
 
+import javax.validation.constraints.NotBlank;
 
 public class PostVideosFormDto {
 
 
+    @NotBlank
     private String titulo;
-
+    @NotBlank
     private String descricao;
-
+    @NotBlank
     private String url;
 
     public String getTitulo() {
