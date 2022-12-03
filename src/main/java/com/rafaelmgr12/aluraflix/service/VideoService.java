@@ -23,4 +23,9 @@ public class VideoService {
         List<Video> allVideos = videoRepository.findAll();
         return allVideos.stream().map(v->modelMapper.map(v,VideoDetailsDto.class)).collect(Collectors.toList());
     }
+
+    public VideoDetailsDto getVideoById(Long id){
+        Video video = videoRepository.findById(id).orElseThrow();
+        return modelMapper.map(video,VideoDetailsDto.class);
+    }
 }

@@ -20,4 +20,8 @@ public class VideosController {
     public List<VideoDetailsDto> listarTodos() {
         return videosService.listAllVideos();
     }
+    @GetMapping("/{id}")
+    public VideoDetailsDto getVideoById(Long id){
+        return videosService.getVideoById(id);
+    }
 }
